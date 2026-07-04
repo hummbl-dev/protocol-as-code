@@ -66,7 +66,8 @@
       "required": ["protocolSource", "inputs", "actors", "steps", "checks", "completion", "receiptContract"],
       "properties": {
         "protocolSource": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "inputs": {
           "type": "object",
@@ -173,7 +174,8 @@
               }
             },
             "exitCriteria": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "timeoutMinutes": {
               "type": "integer",
@@ -211,31 +213,40 @@
       "required": ["protocolSource", "version", "inputs", "actors", "steps", "checks", "completion", "review"],
       "properties": {
         "protocolSource": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "version": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "inputs": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "actors": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "steps": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "checks": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "completion": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "review": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "exception": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         }
       },
       "additionalProperties": false

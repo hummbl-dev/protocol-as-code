@@ -4,17 +4,17 @@
   "protocolManifest": {
     "id": "protocol-as-code/release-protocol-v1",
     "title": "Invalid protocol packet",
-    "version": 0,
+    "version": 1,
     "scope": "model-routing-and-governance-rollout"
   },
   "authority": {
     "owner": "protocol-as-code",
-    "canActOnBehalfOf": []
+    "canActOnBehalfOf": ["protocol-team"]
   },
   "protocolContract": {
     "protocolSource": "protocol-as-code#4",
     "inputs": {
-      "required": [],
+      "required": ["brief"],
       "optional": []
     },
     "actors": [
@@ -24,21 +24,29 @@
         "authorityLevel": "operate"
       }
     ],
-    "steps": [],
+    "steps": [
+      {
+        "id": "step-1",
+        "name": "prepare protocol",
+        "ownerRole": "operator",
+        "action": "prepare the working packet",
+        "requiredOutcome": "protocol packet is ready for review"
+      }
+    ],
     "checks": {
-      "requiredApprovals": 0,
-      "requiredArtifacts": [],
-      "rollbackWindowMinutes": 0
+      "requiredApprovals": 1,
+      "requiredArtifacts": ["packet-receipt"],
+      "rollbackWindowMinutes": 15
     },
     "completion": {
-      "successCriteria": [],
-      "exitCriteria": "",
-      "timeoutMinutes": 0
+      "successCriteria": ["packet fields are reviewable"],
+      "exitCriteria": "review confirms packet is ready for the next stage",
+      "timeoutMinutes": 30
     },
     "receiptContract": {
-      "validationSamples": 0,
-      "validUntil": "2023-01-01T00:00:00Z",
-      "negativeCasesCovered": []
+      "validationSamples": 1,
+      "validUntil": "2026-12-31T00:00:00Z",
+      "negativeCasesCovered": ["missing-review-record"]
     }
   },
   "receiptRequirements": {
@@ -46,9 +54,8 @@
     "version": "protocol-version-receipt.v0.1",
     "inputs": "inputs-receipt.v0.1",
     "actors": "actors-receipt.v0.1",
-    "steps": "",
+    "steps": "steps-receipt.v0.1",
     "checks": "checks-receipt.v0.1",
-    "completion": "completion-receipt.v0.1",
-    "review": "review-receipt.v0.1"
+    "completion": "completion-receipt.v0.1"
   }
 }

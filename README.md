@@ -22,7 +22,7 @@
 
 ## Packet status
 
-- `seed` -> `v0.1-draft`
+- `v0.1-draft` -> `validated-example`
 
 ## v0.1 packet locations
 
@@ -33,4 +33,4 @@
 
 ## Status
 
-Public seed repository. Initial executable packet in progress as `seed` -> `v0.1-draft`.
+Public seed repository. Initial executable packet in progress as `v0.1-draft` -> `validated-example`.
