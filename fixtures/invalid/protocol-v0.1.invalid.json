@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "v0.1",
+  "packetStatus": "validated-example",
+  "protocolManifest": {
+    "id": "protocol-as-code/release-protocol-v1",
+    "title": "Invalid protocol packet",
+    "version": 0,
+    "scope": "model-routing-and-governance-rollout"
+  },
+  "authority": {
+    "owner": "protocol-as-code",
+    "canActOnBehalfOf": []
+  },
+  "protocolContract": {
+    "protocolSource": "protocol-as-code#4",
+    "inputs": {
+      "required": [],
+      "optional": []
+    },
+    "actors": [
+      {
+        "role": "operator",
+        "responsibilities": ["execute"],
+        "authorityLevel": "operate"
+      }
+    ],
+    "steps": [],
+    "checks": {
+      "requiredApprovals": 0,
+      "requiredArtifacts": [],
+      "rollbackWindowMinutes": 0
+    },
+    "completion": {
+      "successCriteria": [],
+      "exitCriteria": "",
+      "timeoutMinutes": 0
+    },
+    "receiptContract": {
+      "validationSamples": 0,
+      "validUntil": "2023-01-01T00:00:00Z",
+      "negativeCasesCovered": []
+    }
+  },
+  "receiptRequirements": {
+    "protocolSource": "protocol-source-receipt.v0.1",
+    "version": "protocol-version-receipt.v0.1",
+    "inputs": "inputs-receipt.v0.1",
+    "actors": "actors-receipt.v0.1",
+    "steps": "",
+    "checks": "checks-receipt.v0.1",
+    "completion": "completion-receipt.v0.1",
+    "review": "review-receipt.v0.1"
+  }
+}

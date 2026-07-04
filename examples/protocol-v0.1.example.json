@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "v0.1",
+  "packetStatus": "v0.1-draft",
+  "protocolManifest": {
+    "id": "protocol-as-code/release-protocol-v1",
+    "title": "Starter release protocol packet",
+    "version": 1,
+    "scope": "model-routing-and-governance-rollout",
+    "description": "Minimal protocol for routing policy changes through review and execution checkpoints."
+  },
+  "authority": {
+    "owner": "protocol-as-code",
+    "canActOnBehalfOf": ["platform_ops", "agent_ops"]
+  },
+  "protocolContract": {
+    "protocolSource": "protocol-as-code#4",
+    "inputs": {
+      "required": ["change_request", "impact_assessment", "rollback_plan"],
+      "optional": ["notes", "supporting_links"]
+    },
+    "actors": [
+      {
+        "role": "operator",
+        "responsibilities": ["execute", "record_progress"],
+        "authorityLevel": "operate"
+      },
+      {
+        "role": "reviewer",
+        "responsibilities": ["approve", "request_changes"],
+        "authorityLevel": "approve"
+      }
+    ],
+    "steps": [
+      {
+        "id": "collect-inputs",
+        "name": "Collect protocol inputs",
+        "ownerRole": "operator",
+        "action": "Record change intent, scope, and rollback plan",
+        "requiredOutcome": "Inputs complete with owner and timestamp"
+      },
+      {
+        "id": "run-review",
+        "name": "Run review gate",
+        "ownerRole": "reviewer",
+        "action": "Validate scope and boundary alignment",
+        "requiredOutcome": "Review receipt attached"
+      },
+      {
+        "id": "execute-and-monitor",
+        "name": "Execute protocol steps",
+        "ownerRole": "operator",
+        "action": "Apply change and monitor telemetry",
+        "requiredOutcome": "Change completes inside timeout window"
+      }
+    ],
+    "checks": {
+      "requiredApprovals": 1,
+      "requiredArtifacts": ["change_ticket", "review_receipt", "execution_log"],
+      "rollbackWindowMinutes": 45
+    },
+    "completion": {
+      "successCriteria": [
+        "All steps complete",
+        "Review receipt attached",
+        "No blocking incident signatures"
+      ],
+      "exitCriteria": "All checks pass and rollback status captured",
+      "timeoutMinutes": 120
+    },
+    "receiptContract": {
+      "validationSamples": 3,
+      "validUntil": "2027-01-01T00:00:00Z",
+      "negativeCasesCovered": ["missing-review-record", "unclear-exit-criteria", "missing-rollback"]
+    }
+  },
+  "receiptRequirements": {
+    "protocolSource": "protocol-source-receipt.v0.1",
+    "version": "protocol-version-receipt.v0.1",
+    "inputs": "inputs-receipt.v0.1",
+    "actors": "actors-receipt.v0.1",
+    "steps": "steps-receipt.v0.1",
+    "checks": "checks-receipt.v0.1",
+    "completion": "completion-receipt.v0.1",
+    "review": "review-receipt.v0.1",
+    "exception": "exception-receipt.v0.1"
+  },
+  "adjacentRepos": [
+    "agent-as-code",
+    "knowledge-as-code",
+    "governance-as-code",
+    "compliance-as-code"
+  ]
+}
