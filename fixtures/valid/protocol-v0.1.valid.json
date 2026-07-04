@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "v0.1",
+  "packetStatus": "validated-example",
+  "protocolManifest": {
+    "id": "protocol-as-code/release-protocol-v1",
+    "title": "Starter release protocol packet",
+    "version": 1,
+    "scope": "model-routing-and-governance-rollout"
+  },
+  "authority": {
+    "owner": "protocol-as-code",
+    "canActOnBehalfOf": ["platform_ops"]
+  },
+  "protocolContract": {
+    "protocolSource": "protocol-as-code#4",
+    "inputs": {
+      "required": ["change_request", "impact_assessment", "rollback_plan"],
+      "optional": ["notes"]
+    },
+    "actors": [
+      {
+        "role": "operator",
+        "responsibilities": ["execute", "record_progress"],
+        "authorityLevel": "operate"
+      }
+    ],
+    "steps": [
+      {
+        "id": "collect-inputs",
+        "name": "Collect protocol inputs",
+        "ownerRole": "operator",
+        "action": "Record change intent, scope, and rollback plan",
+        "requiredOutcome": "Inputs complete with owner and timestamp"
+      },
+      {
+        "id": "run-review",
+        "name": "Run review gate",
+        "ownerRole": "operator",
+        "action": "Attach review receipt before execution",
+        "requiredOutcome": "Review receipt attached"
+      }
+    ],
+    "checks": {
+      "requiredApprovals": 1,
+      "requiredArtifacts": ["change_ticket", "review_receipt"],
+      "rollbackWindowMinutes": 45
+    },
+    "completion": {
+      "successCriteria": [
+        "All steps complete",
+        "Review receipt attached"
+      ],
+      "exitCriteria": "Completion receipt attached",
+      "timeoutMinutes": 120
+    },
+    "receiptContract": {
+      "validationSamples": 2,
+      "validUntil": "2027-01-01T00:00:00Z",
+      "negativeCasesCovered": ["missing-review-record", "missing-rollback"]
+    }
+  },
+  "receiptRequirements": {
+    "protocolSource": "protocol-source-receipt.v0.1",
+    "version": "protocol-version-receipt.v0.1",
+    "inputs": "inputs-receipt.v0.1",
+    "actors": "actors-receipt.v0.1",
+    "steps": "steps-receipt.v0.1",
+    "checks": "checks-receipt.v0.1",
+    "completion": "completion-receipt.v0.1",
+    "review": "review-receipt.v0.1"
+  },
+  "adjacentRepos": [
+    "agent-as-code",
+    "governance-as-code"
+  ]
+}

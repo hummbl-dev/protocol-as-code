@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "v0.1",
+  "packetStatus": "validated-example",
+  "protocolManifest": {
+    "id": "protocol-as-code/release-protocol-v1",
+    "title": "Invalid protocol packet",
+    "version": 1,
+    "scope": "model-routing-and-governance-rollout"
+  },
+  "authority": {
+    "owner": "protocol-as-code",
+    "canActOnBehalfOf": ["protocol-team"]
+  },
+  "protocolContract": {
+    "protocolSource": "protocol-as-code#4",
+    "inputs": {
+      "required": ["brief"],
+      "optional": []
+    },
+    "actors": [
+      {
+        "role": "operator",
+        "responsibilities": ["execute"],
+        "authorityLevel": "operate"
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-1",
+        "name": "prepare protocol",
+        "ownerRole": "operator",
+        "action": "prepare the working packet",
+        "requiredOutcome": "protocol packet is ready for review"
+      }
+    ],
+    "checks": {
+      "requiredApprovals": 1,
+      "requiredArtifacts": ["packet-receipt"],
+      "rollbackWindowMinutes": 15
+    },
+    "completion": {
+      "successCriteria": ["packet fields are reviewable"],
+      "exitCriteria": "review confirms packet is ready for the next stage",
+      "timeoutMinutes": 30
+    },
+    "receiptContract": {
+      "validationSamples": 1,
+      "validUntil": "2026-12-31T00:00:00Z",
+      "negativeCasesCovered": ["missing-review-record"]
+    }
+  },
+  "receiptRequirements": {
+    "protocolSource": "protocol-source-receipt.v0.1",
+    "version": "protocol-version-receipt.v0.1",
+    "inputs": "inputs-receipt.v0.1",
+    "actors": "actors-receipt.v0.1",
+    "steps": "steps-receipt.v0.1",
+    "checks": "checks-receipt.v0.1",
+    "completion": "completion-receipt.v0.1"
+  }
+}
