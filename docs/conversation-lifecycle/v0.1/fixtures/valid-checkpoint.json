@@ -1,0 +1,42 @@
+{
+  "schema_version": "conversation_lifecycle_closeout.v0.1",
+  "session_id": "session-2026-07-10-003",
+  "closeout_profile": "session_checkpoint",
+  "lifecycle_state": "CHECKPOINTING",
+  "capabilities_declared": ["chat_context_read", "connected_source_read"],
+  "session_mission": "Research campaign: OpenClaw x Hermes development histories",
+  "outcome_audit": [
+    {"item": "OpenClaw repository history scanned", "classification": "in_progress", "claim_posture": "observed"},
+    {"item": "Hermes Agent repository history scanned", "classification": "in_progress", "claim_posture": "observed"},
+    {"item": "Phase normalization framework drafted", "classification": "in_progress", "claim_posture": "provisional"}
+  ],
+  "artifact_reconciliation": [
+    {"artifact_type": "document", "identifier": "research-notes-draft", "status": "unconfirmed", "evidence_ref": null}
+  ],
+  "unpreserved_value": [
+    {"value_type": "finding", "description": "OpenClaw and Hermes share a common phase-1 architecture pattern", "preservation_route": "handoff_packet"},
+    {"value_type": "procedure", "description": "Phase normalization: map commit history to 5-phase model", "preservation_route": "handoff_packet"}
+  ],
+  "preservation_writes": [
+    {"destination": "handoff_packet", "check": "Checkpoint handoff produced", "result": "PASS", "evidence_ref": "this"}
+  ],
+  "open_work": [
+    {
+      "next_action": "Complete Hermes repository history scan",
+      "owner": "agent",
+      "blockers": ["rate limit on GitHub API"],
+      "dependency_order": 1,
+      "stop_conditions": ["API access revoked"],
+      "required_approvals": [],
+      "expiry_date": "2026-07-17",
+      "must_not_do": ["publish unverified findings"]
+    }
+  ],
+  "readiness_disposition": "CHECKPOINT_ONLY",
+  "disposition_reasons": ["Session interrupted by rate limit — checkpoint produced, not closed"],
+  "missing_checks": ["Hermes history scan incomplete", "phase normalization framework not validated"],
+  "handoff_packet_ref": "this",
+  "closeout_receipt_ref": "this",
+  "invoked_at": "2026-07-10T18:00:00Z",
+  "aar_inline": null
+}

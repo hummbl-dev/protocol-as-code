@@ -1,0 +1,41 @@
+{
+  "schema_version": "conversation_lifecycle_closeout.v0.1",
+  "session_id": "session-2026-07-10-002",
+  "closeout_profile": "end_chat",
+  "lifecycle_state": "CLOSED",
+  "capabilities_declared": ["chat_context_read"],
+  "session_mission": "Strategy discussion about peptide research direction",
+  "outcome_audit": [
+    {"item": "Decision to focus on collagen-mimetic peptides first", "classification": "completed", "claim_posture": "observed"},
+    {"item": "Constraint: no therapeutic recommendations in research artifacts", "classification": "completed", "claim_posture": "observed"}
+  ],
+  "artifact_reconciliation": [],
+  "unpreserved_value": [
+    {"value_type": "decision", "description": "Collagen-mimetic peptides prioritized over antimicrobial peptides for first research batch", "preservation_route": "handoff_packet"},
+    {"value_type": "constraint", "description": "No therapeutic recommendations — research-only framing required", "preservation_route": "handoff_packet"}
+  ],
+  "preservation_writes": [
+    {"destination": "handoff_packet", "check": "In-chat handoff produced", "result": "PASS", "evidence_ref": "this receipt"},
+    {"destination": "existing_issue", "check": "Update existing issue with decisions", "result": "UNAVAILABLE", "evidence_ref": null},
+    {"destination": "durable_memory", "check": "Bus post with decisions", "result": "UNAVAILABLE", "evidence_ref": null}
+  ],
+  "open_work": [
+    {
+      "next_action": "Create research agenda for collagen-mimetic peptides",
+      "owner": "agent",
+      "blockers": ["operator confirmation of priority"],
+      "dependency_order": 1,
+      "stop_conditions": ["operator reverses decision"],
+      "required_approvals": ["operator"],
+      "expiry_date": null,
+      "must_not_do": ["therapeutic recommendations", "clinical claims"]
+    }
+  ],
+  "readiness_disposition": "READY_WITH_GAPS",
+  "disposition_reasons": ["No external writes available — in-chat handoff only"],
+  "missing_checks": ["connected_source_write unavailable", "coordination_bus_write unavailable"],
+  "handoff_packet_ref": "this",
+  "closeout_receipt_ref": "this",
+  "invoked_at": "2026-07-10T17:00:00Z",
+  "aar_inline": false
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": "conversation_lifecycle_closeout.v0.1",
+  "session_id": "session-2026-07-10-005",
+  "closeout_profile": "end_work_session",
+  "lifecycle_state": "CLOSED",
+  "capabilities_declared": ["chat_context_read", "connected_source_read", "connected_source_write", "artifact_creation"],
+  "session_mission": "Create PR and update issue",
+  "outcome_audit": [],
+  "artifact_reconciliation": [],
+  "unpreserved_value": [],
+  "preservation_writes": [],
+  "open_work": [],
+  "readiness_disposition": "READY_TO_RESUME",
+  "closeout_receipt_ref": "this",
+  "invoked_at": "2026-07-10T20:00:00Z"
+}

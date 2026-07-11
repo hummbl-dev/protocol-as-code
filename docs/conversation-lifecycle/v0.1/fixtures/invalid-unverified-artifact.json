@@ -1,0 +1,24 @@
+{
+  "schema_version": "conversation_lifecycle_closeout.v0.1",
+  "session_id": "session-2026-07-10-004",
+  "closeout_profile": "end_work_session",
+  "lifecycle_state": "CLOSED",
+  "capabilities_declared": ["chat_context_read"],
+  "session_mission": "Create PRs for governance issues",
+  "outcome_audit": [
+    {"item": "PR #999 created", "classification": "completed", "claim_posture": "verified"}
+  ],
+  "artifact_reconciliation": [
+    {"artifact_type": "pr", "identifier": "999", "status": "claimed", "evidence_ref": null}
+  ],
+  "unpreserved_value": [],
+  "preservation_writes": [],
+  "open_work": [],
+  "readiness_disposition": "READY_TO_RESUME",
+  "disposition_reasons": [],
+  "missing_checks": [],
+  "handoff_packet_ref": null,
+  "closeout_receipt_ref": "this",
+  "invoked_at": "2026-07-10T19:00:00Z",
+  "aar_inline": false
+}
