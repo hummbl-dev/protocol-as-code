@@ -1,0 +1,4 @@
+* @hummbl-agent
+/.github/workflows/ @hummbl-agent
+/docs/ @hummbl-agent
+*.md @hummbl-agent
