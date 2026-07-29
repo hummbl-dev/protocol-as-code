@@ -9,6 +9,9 @@ updates:
     labels:
       - dependencies
       - github-actions
+    auto-merge:
+      enabled: true
+      method: merge
 
   # Python
   - package-ecosystem: pip
