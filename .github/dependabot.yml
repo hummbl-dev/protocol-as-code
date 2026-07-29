@@ -9,6 +9,10 @@ updates:
     labels:
       - dependencies
       - github-actions
+    groups:
+      github-actions:
+        patterns:
+          - "*"
 
   # Python
   - package-ecosystem: pip
