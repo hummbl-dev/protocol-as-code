@@ -36,7 +36,6 @@ jobs:
 
   python-tests:
     runs-on: ubuntu-latest
-    if: hashFiles("**/*.py")
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -48,11 +47,12 @@ jobs:
             pip install pytest --quiet
             pip install -e . --quiet 2>/dev/null || pip install -r requirements.txt --quiet 2>/dev/null || true
             pytest --tb=short 2>&1 || echo "::warning::Tests failed or no tests found"
+          else
+            echo "No Python project files found, skipping tests"
           fi
 
   node-tests:
     runs-on: ubuntu-latest
-    if: hashFiles("**/*.py")
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -63,4 +63,6 @@ jobs:
           if [ -f package.json ]; then
             npm ci --quiet 2>/dev/null || npm install --quiet 2>/dev/null || true
             npm test 2>&1 || echo "::warning::Tests failed or no test script"
+          else
+            echo "No package.json found, skipping tests"
           fi
