@@ -36,7 +36,7 @@ jobs:
 
   python-tests:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    if: hashFiles('**/*.py')
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -52,7 +52,7 @@ jobs:
 
   node-tests:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    if: hashFiles('**/*.py')
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
