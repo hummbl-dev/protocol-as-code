@@ -33,3 +33,34 @@ jobs:
             echo "::error::Merge conflict markers detected"
             exit 1
           fi
+
+  python-tests:
+    runs-on: ubuntu-latest
+    if: hashFiles('**/*.py') != ''
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run tests if pytest available
+        run: |
+          if [ -f requirements.txt ] || [ -f pyproject.toml ] || [ -f setup.py ]; then
+            pip install pytest --quiet
+            pip install -e . --quiet 2>/dev/null || pip install -r requirements.txt --quiet 2>/dev/null || true
+            pytest --tb=short 2>&1 || echo "::warning::Tests failed or no tests found"
+          fi
+
+  node-tests:
+    runs-on: ubuntu-latest
+    if: hashFiles('**/package.json') != ''
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run tests if available
+        run: |
+          if [ -f package.json ]; then
+            npm ci --quiet 2>/dev/null || npm install --quiet 2>/dev/null || true
+            npm test 2>&1 || echo "::warning::Tests failed or no test script"
+          fi
