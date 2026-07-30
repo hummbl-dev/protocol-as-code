@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  # Lightweight validation — works on any repo regardless of language
+  # Lightweight validation - works on any repo regardless of language
   validate:
     runs-on: ubuntu-latest
     steps:
