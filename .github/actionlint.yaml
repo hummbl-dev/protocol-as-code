@@ -1,0 +1,6 @@
+# actionlint configuration
+# Declares custom self-hosted runner labels used in .github/workflows/*.yml
+# so actionlint validates workflows using them without flagging unknown labels.
+self-hosted-runner:
+  labels:
+    - hummbl-ci
